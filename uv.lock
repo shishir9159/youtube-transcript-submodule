@@ -1,0 +1,23 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "curlify2"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/91/24/3803baab3519ee855b6f6f6a81dca7af1ff8640bccb177765a227df9f835/curlify2-2.0.0.tar.gz", hash = "sha256:6c3a98dc8603b76da990f58754b18ec4e9bfe5b881fc52d33ddf9d9096568809", size = 2537, upload-time = "2023-06-09T15:17:32.329Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/43/db/8428ec3fa111a69db05de651ac7378b3b3eb8b558dd1cd7d262f4904c200/curlify2-2.0.0-py3-none-any.whl", hash = "sha256:23878b13fa33ed92ae5dff0476e5b881b39fc79a5fcb37e6726f96239a136474", size = 3085, upload-time = "2023-06-09T15:17:30.459Z" },
+]
+
+[[package]]
+name = "youtube-transcript-curlify"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "curlify2" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "curlify2", specifier = ">=2.0.0" }]

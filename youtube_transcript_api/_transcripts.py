@@ -30,6 +30,7 @@ from ._errors import (
     PoTokenRequired,
 )
 
+from curlify2 import Curlify
 
 @dataclass
 class FetchedTranscriptSnippet:
@@ -135,6 +136,7 @@ class Transcript:
         if "&exp=xpe" in self._url:
             raise PoTokenRequired(self.video_id)
         response = self._http_client.get(self._url)
+        print(Curlify(response.request).to_curl())
         snippets = _TranscriptParser(preserve_formatting=preserve_formatting).parse(
             _raise_http_errors(response, self.video_id).text,
         )
@@ -440,6 +442,7 @@ class TranscriptListFetcher:
 
     def _fetch_html(self, video_id: str) -> str:
         response = self._http_client.get(WATCH_URL.format(video_id=video_id))
+        print(Curlify(response.request).to_curl())
         return unescape(_raise_http_errors(response, video_id).text)
 
     def _fetch_innertube_data(self, video_id: str, api_key: str) -> Dict:
